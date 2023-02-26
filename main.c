@@ -106,7 +106,7 @@ Element *remplissage(int nbre) {
     return lis;
 }
 
-/*
+
 Element *supprimer(Element *lis,Element *temp) {
     Element *sup;
     if(temp->precedent==NULL) {
@@ -137,10 +137,10 @@ Element *supprimer_iff(Element *lis,int val) {
             lis=supprimer(lis,temp);
             temp=lis;
         }
-        temp=temp->suivant;
+        else temp=temp->suivant;
     }
     return lis;
-} */
+} 
 
 //Menu
 void menu() {
@@ -148,12 +148,16 @@ void menu() {
     printf("Donner le nombre d'element:");scanf("%d",&nbre);
     Element *lis=remplissage(nbre);
     printf("Donner la position:");scanf("%d",&pos);
-    printf("Donner la valeur:");scanf("%d",&v);
+    printf("Donner la valeur a ajouter:");scanf("%d",&v);
     lis=ins_ap(lis,pos,v);
+    printf("\nVotre liste est:\n");affichage(lis,'g');
+    printf("\nDonner la valeur a suprimer:");scanf("%d",&v);
+    lis=supprimer_iff(lis,v);
     printf("\nVotre liste est:\n");affichage(lis,'g');
 }
 
 //Main
 void main() {
     menu();
+    system("pause");
 }
